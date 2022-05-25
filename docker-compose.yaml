@@ -1,0 +1,33 @@
+version: "3"
+services:
+  ofelia:
+    image: mcuadros/ofelia:latest
+    depends_on:
+      - renderer
+    command: daemon --docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+#    labels:
+#      ofelia.job-local.default.schedule: "@every 24h"
+#      ofelia.job-local.default.command: "date"
+
+  renderer:
+    image: fw
+    labels:
+      ofelia.enabled: "true"
+      ofelia.job-exec.render.schedule: "@every 3m"
+      ofelia.job-exec.render.command: "python /render.py"
+      ofelia.job-exec.render.no-overlap: true
+    command: tail -f /dev/null
+    volumes:
+    - ./content:/content
+
+  nginx:
+    image: nginx
+    depends_on:
+      - renderer
+    volumes:
+    - ./content:/usr/share/nginx/html
+    ports:
+    - 8080:80
+

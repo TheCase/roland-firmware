@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Roland Firmware Tracker</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="container"> 
+  <h3>Roland Firmware Tracker</h3>
+  <i>last updated {{ today }}</i>
+  <table class="table table-condensed">
+    <tr><th>model</th><th>version</th><th>date</th></tr>
+    {%- for item in data %}
+    <tr>
+      <td>{{ item.upper() }}</td>
+      <td><a href="{{ data[item].url }}" target="_new">{{ data[item].version }}</a></td>
+      <td>{{ data[item].date }}</td>
+    </tr>
+    {%- endfor %}
+  </table>
+  issues?  open them here [<a href="{{ issues_link }}" target="_new">link</a>]
+  </div> 
+</body>
+</html>
