@@ -10,7 +10,7 @@ from jinja2 import Environment, FileSystemLoader
 
 import logging
 fmt="%(asctime)s - %(levelname)-s - %(message)s"
-logging.basicConfig(level=logging.DEBUG, format=fmt)
+logging.basicConfig(level=logging.INFO, format=fmt)
 log = logging.getLogger(__name__)
 
 issues_link = "https://github.com/TheCase/roland-firmware/issues" 
