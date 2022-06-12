@@ -14,7 +14,7 @@ logging.basicConfig(level=logging.INFO, format=fmt)
 log = logging.getLogger(__name__)
 
 issues_link = "https://github.com/TheCase/roland-firmware/issues" 
-models = os.getenv('MODELS'.split(',')
+models = os.getenv('MODELS',"juno-x").split(',')
 
 def get_content(url):    
    html_page = urllib.request.urlopen(url)
