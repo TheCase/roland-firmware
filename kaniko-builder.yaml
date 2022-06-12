@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: kaniko-builder
+  name: kaniko-builder-roland-firmware
   namespace: kaniko
 spec:
   containers:
