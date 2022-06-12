@@ -10,7 +10,7 @@ from jinja2 import Environment, FileSystemLoader
 
 import logging
 fmt="%(asctime)s - %(levelname)-s - %(message)s"
-logging.basicConfig(level=logging.INFO, format=fmt)
+logging.basicConfig(level=logging.DEBUG, format=fmt)
 log = logging.getLogger(__name__)
 
 issues_link = "https://github.com/TheCase/roland-firmware/issues" 
@@ -36,7 +36,7 @@ def firmware_info(url):
   content = soup.text
   for line in content.split('\n'):
     log.debug(line)
-    regex = r"^\[ Ver\.([0-9\.]+) \]\s?(.*)$"
+    regex = r"^\s*?\[ Ver\.([0-9\.]+) \]\s?(.*)$"
     match = re.match(regex, line)
     if match:
       return url, match
