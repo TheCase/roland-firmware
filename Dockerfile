@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3.11-rc-slim-bullseye
 
 COPY requirements.txt template.jinja render.py / 
 RUN pip install -r /requirements.txt
