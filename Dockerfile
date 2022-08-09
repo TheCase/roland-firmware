@@ -1,9 +1,16 @@
-FROM python:3
+FROM python:3.11-rc-slim-bullseye
 
 COPY requirements.txt template.jinja render.py / 
-RUN pip install -r /requirements.txt
+RUN apt-get update && \
+    apt-get -y install g++ && \
+    pip install -r /requirements.txt && \
+    apt-get -y remove g++ && \
+    apt-get -y autoremove && \
+    rm -rf /var/apt/cache
 
 # sample defaults for models to track
 ENV MODELS='juno-x'
+
+VOLUME /content
 
 CMD [ "python", "/render.py" ]
