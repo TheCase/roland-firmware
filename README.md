@@ -12,7 +12,7 @@ Set the MODELS env var (comma separated string) with the models you'd like to tr
 ```
 services:
   roland_firmware:
-    image: thecase/roland-firmware-summary:latest
+    image: thecase/roland-firmware:latest
     ...
     environment:
     - MODELS="jd-08,jx-08"
