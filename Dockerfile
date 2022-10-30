@@ -1,6 +1,7 @@
 FROM python:3.12-rc-slim-buster
 
 COPY requirements.txt template.jinja render.py / 
+
 RUN apt-get update && \
     apt-get -y install g++ && \
     pip install -r /requirements.txt && \
