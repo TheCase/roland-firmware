@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import os
 import time
 from bs4 import BeautifulSoup
@@ -13,10 +15,10 @@ fmt="%(asctime)s - %(levelname)-s - %(message)s"
 logging.basicConfig(level=logging.INFO, format=fmt)
 log = logging.getLogger(__name__)
 
-issues_link = "https://github.com/TheCase/roland-firmware/issues" 
+issues_link = "https://github.com/TheCase/roland-firmware/issues"
 models = os.getenv('MODELS',"juno-x").split(',')
 
-def get_content(url):    
+def get_content(url):
    html_page = urllib.request.urlopen(url)
    return BeautifulSoup(html_page, "html.parser")
 
@@ -36,13 +38,13 @@ def firmware_info(url):
   content = soup.text
   for line in content.split('\n'):
     log.debug(line)
-    regex = r"^\s*?\[ Ver\.([0-9\.]+) \]\s?(.*)$"
+    regex = r"^\s*?\[\s?Ver\.([0-9\.]+)\s?\]\s?(.*)$"
     match = re.match(regex, line)
     if match:
       return url, match
   log.error("no match found.  Abort.")
   exit
-      
+
 def get_latest(model):
   support_url = "https://www.roland.com/global/support/by_product/{0}/updates_drivers".format(model)
   firmware_url = "https://www.roland.com{0}".format(firmware_link(support_url))
@@ -52,7 +54,7 @@ def get_latest(model):
 def write_content(content):
   directory = './content'
   if not os.path.exists(directory):
-    os.mkdir(directory) 
+    os.mkdir(directory)
   f = open(os.path.join(directory,"index.html"), "w")
   f.write(content)
   f.close()
