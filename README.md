@@ -19,22 +19,7 @@ services:
 ```
 
 
-## build image with Kaniko in Kubernetes 
-
-1. must add a secret:
-
+## build amd/arm image
 ```
-kubectl -n kaniko create secret \ 
-docker-registry dockerhub-registry \
---docker-server=https://index.docker.io/v1/ \
---docker-username=<username> \
---docker-password=<token> \
---docker-email=<email>
-```
-
-2. Create pod from manifest
-
-```
-kubectl apply -f kaniko-builder.yaml
-kubectl logs -n kaniko -f kaniko-builder 
+docker buildx build --platform linux/amd64,linux/arm64 -t thecase/roland-firmware:1.0.1 -t thecase/roland-firmware:latest . --push
 ```
