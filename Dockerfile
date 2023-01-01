@@ -1,13 +1,10 @@
-FROM python:3.12-rc-slim
+FROM python:alpine3.17
 
 COPY requirements.txt template.jinja render.py / 
 
-RUN apt-get update && \
-    apt-get -y install g++ && \
+RUN apk --no-cache add g++ && \
     pip install -r /requirements.txt && \
-    apt-get -y remove g++ && \
-    apt-get -y autoremove && \
-    rm -rf /var/apt/cache
+    apk del g++
 
 # sample defaults for models to track
 ENV MODELS='juno-x'
