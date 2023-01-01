@@ -63,7 +63,7 @@ def write_content(content):
 def render(data):
   log.info("starting html render")
   file_loader = FileSystemLoader('.')
-  env = Environment(loader=file_loader)
+  env = Environment(loader=file_loader, autoescape=True)
   template = env.get_template('template.jinja')
   today = datetime.utcnow().strftime("%B %d %Y %H:%M:%S UTC")
   content = template.render(data=data, today=today, issues_link=issues_link)
