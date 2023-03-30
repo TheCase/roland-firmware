@@ -1,4 +1,4 @@
-FROM python:alpine3.17
+FROM python:3.12.0a6-alpine3.17
 
 COPY requirements.txt template.jinja render.py / 
 
