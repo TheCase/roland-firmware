@@ -1,6 +1,6 @@
 FROM python:alpine3.17
 
-COPY requirements.txt template.jinja render.py / 
+COPY requirements.txt main.py roland_firmware / 
 
 RUN apk --no-cache add g++ && \
     pip install -r /requirements.txt && \
@@ -11,4 +11,4 @@ ENV MODELS='juno-x'
 
 VOLUME /content
 
-CMD [ "python", "/render.py" ]
+CMD [ "python", "main.py" ]
