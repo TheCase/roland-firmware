@@ -2,7 +2,6 @@
 
 from datetime import datetime
 from roland_firmware.parse import get_latest
-from numpy import datetime_as_string
 from jinja2 import Environment, FileSystemLoader
 import os
 

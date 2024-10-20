@@ -2,7 +2,6 @@
 import unittest
 import roland_firmware.parse
 import roland_firmware.render
-import os
 
 
 class TestParse(unittest.TestCase): 
