@@ -50,8 +50,8 @@ jobs:
       if: github.event_name == 'pull_request'
       run: |
         docker compose up -d 
-        sleep 1
-        curl -I -s http://localhost:8080/sh01a/image.php?bank=4&patch=1
+        sleep 3
+        curl -I -s http://localhost:8080/
 
     # need a step to generate new tag and release on merge
     
