@@ -2,7 +2,7 @@
 
 Docker image that scrapes the Roland website to create a quick summary HTML page with latest Roland hardware firmware versions.
 
-I use the great open-source `changedecection.io` to poll the content for changes: https://github.com/dgtlmoon/changedetection.io
+I use the resulting web page in conbination with the great, open-source `changedecection.io` to poll the content for changes: https://github.com/dgtlmoon/changedetection.io
 
 
 ## Usage
